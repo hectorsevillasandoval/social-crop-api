@@ -7,11 +7,10 @@ const fileUpload = require('express-fileupload')
 class Server {
   constructor () {
     this.app = express()
-    this.PORT = process.env.PORT || 9000
+    this.PORT = process.env.PORT || 8000
     this.server = http.createServer(this.app)
     this.paths = {
-      uploads: '/api/v1/upload/',
-      user: '/api/v1/users'
+      uploads: '/api/v1/upload/'
     }
 
     this.middleware()
@@ -19,6 +18,11 @@ class Server {
   }
 
   routes () {
+    this.app.use('/home', (req, res) => {
+      return res.json({
+        msg: 'success'
+      })
+    })
     this.app.use(this.paths.uploads, uploadsRouter)
   }
 
