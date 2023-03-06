@@ -61,7 +61,8 @@ const cloudinaryResizeImage = (publicId, format, { width = 0, height = 0 }) => {
     height,
     width,
     crop: 'fill',
-    gravity: 'auto'
+    gravity: 'auto',
+    secure: true
   }
 
   return cloudinary.url(`${publicId}.${format}`, resizeOptions)
